@@ -32,6 +32,11 @@ namespace Home_Service
                 dt.Columns["phone_number"].ColumnName = "Тел.номер клиента";
                 dataGridView1.DataSource = dt;
                 dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Width = 145;
+                dataGridView1.Columns[2].Width = 145;
+                dataGridView1.Columns[3].Width = 150;
+                dataGridView1.Columns[4].Width = 150;
+                dataGridView1.Columns[5].Width = 145;
                 dataGridView1.AllowUserToAddRows = false;
                 connection.Close();
             }

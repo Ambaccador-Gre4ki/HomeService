@@ -111,8 +111,16 @@ namespace Home_Service
                 };
                 SqliteDataReader dr = sql.ExecuteReader();
                 dt.Load(dr);
+                dt.Columns["account_number"].ColumnName = "Номер лицевого счёта";
+                dt.Columns["full_name"].ColumnName = "ФИО";
+                dt.Columns["service"].ColumnName = "Услуга";
+                dt.Columns["price"].ColumnName = "Цена";
                 dataGridView1.DataSource = dt;
                 dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Width = 180;
+                dataGridView1.Columns[2].Width = 180;
+                dataGridView1.Columns[3].Width = 180;
+                dataGridView1.Columns[4].Width = 180;
                 connection.Close();
             }
         }

@@ -32,6 +32,9 @@ namespace Home_Service
                 dt.Columns[1].ColumnName = "Услуга";
                 dt.Columns[2].ColumnName = "Стоимость";
                 dataGridView1.DataSource = dt;
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Width = 172;
+                dataGridView1.Columns[2].Width = 173;
                 connection.Close();
             }
         }
