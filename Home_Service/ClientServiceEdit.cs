@@ -14,8 +14,8 @@ namespace Home_Service
 
         private void ClientServiceEdit_Load(object sender, EventArgs e)
         {
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;//услуга
-            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;//клиент
+            serviceComboBox.DropDownStyle = ComboBoxStyle.DropDownList;//услуга
+            clientComboBox.DropDownStyle = ComboBoxStyle.DropDownList;//клиент
             fill();
             using (var connection = new SqliteConnection("Data Source=HS.db"))
             {
@@ -26,7 +26,7 @@ namespace Home_Service
                 SqliteDataReader sql = sqliteCommand.ExecuteReader();
                 while (sql.Read())
                 {
-                    comboBox1.Items.Add(sql.GetValue(1).ToString());
+                    serviceComboBox.Items.Add(sql.GetValue(1).ToString());
                 }
                 //Загрузка плательщика
                 SqliteCommand sqliteCommand_1 = new SqliteCommand("SELECT * FROM Clients;", 
@@ -34,23 +34,23 @@ namespace Home_Service
                 SqliteDataReader sqliteDataReader = sqliteCommand_1.ExecuteReader();
                 while (sqliteDataReader.Read())
                 {
-                    comboBox2.Items.Add(sqliteDataReader.GetValue(2).ToString());
+                    clientComboBox.Items.Add(sqliteDataReader.GetValue(2).ToString());
                 }        
                 connection.Close();
             }
             UpdateGridView();
         }
 
-        private void button1_Click(object sender, EventArgs e)//Кнопка меню
+        private void Menu_Click(object sender, EventArgs e)//Кнопка меню
         {
             MainPage mainPage = new MainPage();
             this.Visible = false;
             mainPage.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)//Добавление услуги
+        private void AddClientService_Click(object sender, EventArgs e)//Добавление услуги
         {
-            if (comboBox1.Text == "" || comboBox2.Text == "")
+            if (serviceComboBox.Text == "" || clientComboBox.Text == "")
             {
                 MessageBox.Show("Выберите счет и услугу", "Ошибка :(");
             }
@@ -65,7 +65,7 @@ namespace Home_Service
                     SqliteCommand sql = new SqliteCommand
                     {
                         Connection = connection,
-                        CommandText = "SELECT id_service FROM Services WHERE service='" + comboBox1.Text + "';"
+                        CommandText = "SELECT id_service FROM Services WHERE service='" + serviceComboBox.Text + "';"
                     };
                     SqliteDataReader dr = sql.ExecuteReader();
                     dt.Load(dr);
@@ -75,7 +75,7 @@ namespace Home_Service
                     SqliteCommand sql2 = new SqliteCommand
                     {
                         Connection = connection,
-                        CommandText = "SELECT id_client FROM Clients WHERE full_name='" + comboBox2.Text + "';"
+                        CommandText = "SELECT id_client FROM Clients WHERE full_name='" + clientComboBox.Text + "';"
                     };
                     SqliteDataReader dr2 = sql2.ExecuteReader();
                     dt2.Load(dr2);
@@ -94,7 +94,7 @@ namespace Home_Service
                 }
                 UpdateGridView();
                 MessageBox.Show("Изменения внесены в базу", "", MessageBoxButtons.OK);
-            }            
+            }
         }
 
         public void UpdateGridView()//Обновление dataGrid
@@ -115,12 +115,12 @@ namespace Home_Service
                 dt.Columns["full_name"].ColumnName = "ФИО";
                 dt.Columns["service"].ColumnName = "Услуга";
                 dt.Columns["price"].ColumnName = "Цена";
-                dataGridView1.DataSource = dt;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[1].Width = 180;
-                dataGridView1.Columns[2].Width = 180;
-                dataGridView1.Columns[3].Width = 180;
-                dataGridView1.Columns[4].Width = 180;
+                client_serviceDataGrid.DataSource = dt;
+                client_serviceDataGrid.Columns[0].Visible = false;
+                client_serviceDataGrid.Columns[1].Width = 180;
+                client_serviceDataGrid.Columns[2].Width = 180;
+                client_serviceDataGrid.Columns[3].Width = 180;
+                client_serviceDataGrid.Columns[4].Width = 180;
                 connection.Close();
             }
         }
@@ -141,9 +141,9 @@ namespace Home_Service
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)//Удаление услуги
+        private void DeleteClientService_Click(object sender, EventArgs e)//Удаление услуги
         {
-            string ID = dataGridView1.SelectedCells[0].Value.ToString();
+            string ID = client_serviceDataGrid.SelectedCells[0].Value.ToString();
             using (var connection = new SqliteConnection("Data Source=HS.db"))
             {
                 connection.Open();
@@ -151,7 +151,7 @@ namespace Home_Service
                 {
                     Connection = connection,
                     CommandText = "DELETE FROM Clients_Services WHERE id_cs=" + Convert.ToInt32(ID) + ";"
-            };
+                };
                 sql.ExecuteNonQuery();
                 connection.Close();
             }

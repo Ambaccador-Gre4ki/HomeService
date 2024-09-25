@@ -29,61 +29,61 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientTable));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.clientsDataGrid = new System.Windows.Forms.DataGridView();
+            this.Menu = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.companyTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.accountNumberTextBox = new System.Windows.Forms.TextBox();
+            this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
+            this.addressTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.fullNameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.accountSearchText = new System.Windows.Forms.TextBox();
+            this.Search = new System.Windows.Forms.Button();
+            this.DeleteClient = new System.Windows.Forms.Button();
+            this.EditClient = new System.Windows.Forms.Button();
+            this.AddClient = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.clientsDataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // clientsDataGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 95);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 239);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
+            this.clientsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.clientsDataGrid.Location = new System.Drawing.Point(10, 95);
+            this.clientsDataGrid.Name = "clientsDataGrid";
+            this.clientsDataGrid.Size = new System.Drawing.Size(776, 239);
+            this.clientsDataGrid.TabIndex = 0;
+            this.clientsDataGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.clientsDataGrid_RowHeaderMouseClick);
             // 
-            // button1
+            // Menu
             // 
-            this.button1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.button1.Font = new System.Drawing.Font("Leelawadee UI", 12F);
-            this.button1.Location = new System.Drawing.Point(664, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 47);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Меню";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Menu.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.Menu.Font = new System.Drawing.Font("Leelawadee UI", 12F);
+            this.Menu.Location = new System.Drawing.Point(664, 21);
+            this.Menu.Name = "Menu";
+            this.Menu.Size = new System.Drawing.Size(99, 47);
+            this.Menu.TabIndex = 1;
+            this.Menu.Text = "Меню";
+            this.Menu.UseVisualStyleBackColor = false;
+            this.Menu.Click += new System.EventHandler(this.Menu_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.companyTextBox);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.accountNumberTextBox);
+            this.groupBox1.Controls.Add(this.phoneNumberTextBox);
+            this.groupBox1.Controls.Add(this.addressTextBox);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.fullNameTextBox);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Leelawadee UI", 12F);
@@ -94,13 +94,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Данные";
             // 
-            // textBox6
+            // companyTextBox
             // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox6.Location = new System.Drawing.Point(12, 63);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(191, 29);
-            this.textBox6.TabIndex = 12;
+            this.companyTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.companyTextBox.Location = new System.Drawing.Point(12, 63);
+            this.companyTextBox.Name = "companyTextBox";
+            this.companyTextBox.Size = new System.Drawing.Size(191, 29);
+            this.companyTextBox.TabIndex = 12;
             // 
             // label5
             // 
@@ -111,29 +111,29 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Лицевой счёт";
             // 
-            // textBox4
+            // accountNumberTextBox
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox4.Location = new System.Drawing.Point(137, 180);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(191, 29);
-            this.textBox4.TabIndex = 10;
+            this.accountNumberTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.accountNumberTextBox.Location = new System.Drawing.Point(137, 180);
+            this.accountNumberTextBox.Name = "accountNumberTextBox";
+            this.accountNumberTextBox.Size = new System.Drawing.Size(191, 29);
+            this.accountNumberTextBox.TabIndex = 10;
             // 
-            // textBox2
+            // phoneNumberTextBox
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox2.Location = new System.Drawing.Point(12, 131);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(191, 29);
-            this.textBox2.TabIndex = 9;
+            this.phoneNumberTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.phoneNumberTextBox.Location = new System.Drawing.Point(12, 131);
+            this.phoneNumberTextBox.Name = "phoneNumberTextBox";
+            this.phoneNumberTextBox.Size = new System.Drawing.Size(191, 29);
+            this.phoneNumberTextBox.TabIndex = 9;
             // 
-            // textBox3
+            // addressTextBox
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox3.Location = new System.Drawing.Point(222, 131);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(174, 29);
-            this.textBox3.TabIndex = 7;
+            this.addressTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.addressTextBox.Location = new System.Drawing.Point(222, 131);
+            this.addressTextBox.Name = "addressTextBox";
+            this.addressTextBox.Size = new System.Drawing.Size(174, 29);
+            this.addressTextBox.TabIndex = 7;
             // 
             // label4
             // 
@@ -153,13 +153,13 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Телефон";
             // 
-            // textBox1
+            // fullNameTextBox
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.Location = new System.Drawing.Point(225, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 29);
-            this.textBox1.TabIndex = 3;
+            this.fullNameTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.fullNameTextBox.Location = new System.Drawing.Point(225, 63);
+            this.fullNameTextBox.Name = "fullNameTextBox";
+            this.fullNameTextBox.Size = new System.Drawing.Size(174, 29);
+            this.fullNameTextBox.TabIndex = 3;
             // 
             // label2
             // 
@@ -181,11 +181,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.accountSearchText);
+            this.groupBox2.Controls.Add(this.Search);
+            this.groupBox2.Controls.Add(this.DeleteClient);
+            this.groupBox2.Controls.Add(this.EditClient);
+            this.groupBox2.Controls.Add(this.AddClient);
             this.groupBox2.Font = new System.Drawing.Font("Leelawadee UI", 12F);
             this.groupBox2.Location = new System.Drawing.Point(447, 355);
             this.groupBox2.Name = "groupBox2";
@@ -194,53 +194,53 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Функции";
             // 
-            // textBox5
+            // accountSearchText
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox5.Location = new System.Drawing.Point(17, 28);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(183, 29);
-            this.textBox5.TabIndex = 4;
+            this.accountSearchText.BackColor = System.Drawing.SystemColors.Control;
+            this.accountSearchText.Location = new System.Drawing.Point(17, 28);
+            this.accountSearchText.Name = "accountSearchText";
+            this.accountSearchText.Size = new System.Drawing.Size(183, 29);
+            this.accountSearchText.TabIndex = 4;
             // 
-            // button6
+            // Search
             // 
-            this.button6.Location = new System.Drawing.Point(206, 28);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(127, 29);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "Поиск по л/с";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.Search.Location = new System.Drawing.Point(206, 28);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(127, 29);
+            this.Search.TabIndex = 3;
+            this.Search.Text = "Поиск по л/с";
+            this.Search.UseVisualStyleBackColor = true;
+            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
-            // button5
+            // DeleteClient
             // 
-            this.button5.Location = new System.Drawing.Point(36, 173);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(280, 32);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Удалить пользователя";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.DeleteClient.Location = new System.Drawing.Point(36, 173);
+            this.DeleteClient.Name = "DeleteClient";
+            this.DeleteClient.Size = new System.Drawing.Size(280, 32);
+            this.DeleteClient.TabIndex = 2;
+            this.DeleteClient.Text = "Удалить пользователя";
+            this.DeleteClient.UseVisualStyleBackColor = true;
+            this.DeleteClient.Click += new System.EventHandler(this.DeleteClient_Click);
             // 
-            // button4
+            // EditClient
             // 
-            this.button4.Location = new System.Drawing.Point(36, 125);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(280, 32);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Редактировать пользователя";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.EditClient.Location = new System.Drawing.Point(36, 125);
+            this.EditClient.Name = "EditClient";
+            this.EditClient.Size = new System.Drawing.Size(280, 32);
+            this.EditClient.TabIndex = 1;
+            this.EditClient.Text = "Редактировать пользователя";
+            this.EditClient.UseVisualStyleBackColor = true;
+            this.EditClient.Click += new System.EventHandler(this.EditClient_Click);
             // 
-            // button3
+            // AddClient
             // 
-            this.button3.Location = new System.Drawing.Point(36, 78);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(280, 32);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Добавить пользователя";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.AddClient.Location = new System.Drawing.Point(36, 78);
+            this.AddClient.Name = "AddClient";
+            this.AddClient.Size = new System.Drawing.Size(280, 32);
+            this.AddClient.TabIndex = 0;
+            this.AddClient.Text = "Добавить пользователя";
+            this.AddClient.UseVisualStyleBackColor = true;
+            this.AddClient.Click += new System.EventHandler(this.AddClient_Click);
             // 
             // ClientTable
             // 
@@ -250,13 +250,13 @@
             this.ClientSize = new System.Drawing.Size(799, 599);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.Menu);
+            this.Controls.Add(this.clientsDataGrid);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ClientTable";
             this.Text = "База плательщиков";
             this.Load += new System.EventHandler(this.ClientTable_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientsDataGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -267,24 +267,24 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView clientsDataGrid;
+        private System.Windows.Forms.Button Menu;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button Search;
+        private System.Windows.Forms.Button DeleteClient;
+        private System.Windows.Forms.Button EditClient;
+        private System.Windows.Forms.Button AddClient;
+        private System.Windows.Forms.TextBox addressTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox fullNameTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox accountSearchText;
+        private System.Windows.Forms.TextBox phoneNumberTextBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox accountNumberTextBox;
+        private System.Windows.Forms.TextBox companyTextBox;
     }
 }

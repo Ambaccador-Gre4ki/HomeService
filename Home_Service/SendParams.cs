@@ -29,7 +29,7 @@ namespace Home_Service
                 SqliteDataReader dr = sql.ExecuteReader();
                 while (dr.Read())
                 {
-                    comboBox1.Items.Add((string)dr["service"]);
+                    serviceComboBox.Items.Add((string)dr["service"]);
                 }
                 connection.Close();
             }
@@ -55,33 +55,33 @@ namespace Home_Service
                 dt.Columns["value_prev"].ColumnName = "Прошлое значение";
                 dt.Columns["value_curr"].ColumnName = "Текущее значение";
 
-                dataGridView1.DataSource = dt;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.AllowUserToAddRows = false;
+                paramsHistoryGridView.DataSource = dt;
+                paramsHistoryGridView.Columns[0].Visible = false;
+                paramsHistoryGridView.AllowUserToAddRows = false;
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)//Меню
+        private void Menu_Click(object sender, EventArgs e)//Меню
         {
             MainPage mainPage = new MainPage();
             this.Visible = false;
             mainPage.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)//Передача показателей
+        private void Send_Click(object sender, EventArgs e)//Передача показателей
         {
-            string service = comboBox1.Text.ToString();
-            string data = dateTimePicker1.Text.ToString();
-            string curr_value = textBox1.Text.ToString();
+            string service = serviceComboBox.Text.ToString();
+            string data = datePicker.Text.ToString();
+            string curr_value = currentParams.Text.ToString();
 
             using (var connection = new SqliteConnection("Data Source=HS.db"))
             {
 
                 connection.Open();
-                SqliteCommand sql = new SqliteCommand 
-                { 
+                SqliteCommand sql = new SqliteCommand
+                {
                     Connection = connection,
-                    CommandText = "UPDATE Clients_Services SET id_client=" + nuls.user_id + 
+                    CommandText = "UPDATE Clients_Services SET id_client=" + nuls.user_id +
                     ", id_service=(SELECT id_service FROM Services WHERE service='" + service + "'), data='" + data + "', value_prev=value_curr, "
                     + "value_curr=" + curr_value + " WHERE id_client=" + nuls.user_id + " AND id_service=(SELECT id_service FROM Services WHERE service='" + service + "');"
                 };
@@ -90,6 +90,5 @@ namespace Home_Service
             }
             UpdateGridView();
         }
-
     }
 }

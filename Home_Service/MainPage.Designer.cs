@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.pricesDataGrid = new System.Windows.Forms.DataGridView();
+            this.ServiceDB = new System.Windows.Forms.Button();
+            this.Exit = new System.Windows.Forms.Button();
+            this.AddServiceToClient = new System.Windows.Forms.Button();
+            this.ClientDB = new System.Windows.Forms.Button();
+            this.SendParameters = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pricesDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -50,73 +50,73 @@
             this.label1.Text = "Услуги ЖКХ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dataGridView1
+            // pricesDataGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(28, 105);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(347, 145);
-            this.dataGridView1.TabIndex = 1;
+            this.pricesDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.pricesDataGrid.Location = new System.Drawing.Point(28, 105);
+            this.pricesDataGrid.Name = "pricesDataGrid";
+            this.pricesDataGrid.Size = new System.Drawing.Size(347, 145);
+            this.pricesDataGrid.TabIndex = 1;
             // 
-            // button3
+            // ServiceDB
             // 
-            this.button3.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.button3.Font = new System.Drawing.Font("Leelawadee UI", 12F);
-            this.button3.Location = new System.Drawing.Point(410, 304);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(190, 57);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "База ЖКУ";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.ServiceDB.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.ServiceDB.Font = new System.Drawing.Font("Leelawadee UI", 12F);
+            this.ServiceDB.Location = new System.Drawing.Point(410, 304);
+            this.ServiceDB.Name = "ServiceDB";
+            this.ServiceDB.Size = new System.Drawing.Size(190, 57);
+            this.ServiceDB.TabIndex = 4;
+            this.ServiceDB.Text = "База ЖКУ";
+            this.ServiceDB.UseVisualStyleBackColor = false;
+            this.ServiceDB.Click += new System.EventHandler(this.ServiceDB_Click);
             // 
-            // button4
+            // Exit
             // 
-            this.button4.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.button4.Font = new System.Drawing.Font("Leelawadee UI", 12F);
-            this.button4.Location = new System.Drawing.Point(410, 404);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(190, 57);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Выход";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.Exit.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.Exit.Font = new System.Drawing.Font("Leelawadee UI", 12F);
+            this.Exit.Location = new System.Drawing.Point(410, 404);
+            this.Exit.Name = "Exit";
+            this.Exit.Size = new System.Drawing.Size(190, 57);
+            this.Exit.TabIndex = 5;
+            this.Exit.Text = "Выход";
+            this.Exit.UseVisualStyleBackColor = false;
+            this.Exit.Click += new System.EventHandler(this.Exit_Click);
             // 
-            // button2
+            // AddServiceToClient
             // 
-            this.button2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.button2.Font = new System.Drawing.Font("Leelawadee UI", 12F);
-            this.button2.Location = new System.Drawing.Point(410, 206);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(190, 57);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Добавление услуг потребителю";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.AddServiceToClient.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.AddServiceToClient.Font = new System.Drawing.Font("Leelawadee UI", 12F);
+            this.AddServiceToClient.Location = new System.Drawing.Point(410, 206);
+            this.AddServiceToClient.Name = "AddServiceToClient";
+            this.AddServiceToClient.Size = new System.Drawing.Size(190, 57);
+            this.AddServiceToClient.TabIndex = 3;
+            this.AddServiceToClient.Text = "Добавление услуг потребителю";
+            this.AddServiceToClient.UseVisualStyleBackColor = false;
+            this.AddServiceToClient.Click += new System.EventHandler(this.AddServiceToClient_Click);
             // 
-            // button1
+            // ClientDB
             // 
-            this.button1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.button1.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(410, 105);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 57);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "База потребителей";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ClientDB.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.ClientDB.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClientDB.Location = new System.Drawing.Point(410, 105);
+            this.ClientDB.Name = "ClientDB";
+            this.ClientDB.Size = new System.Drawing.Size(190, 57);
+            this.ClientDB.TabIndex = 2;
+            this.ClientDB.Text = "База потребителей";
+            this.ClientDB.UseVisualStyleBackColor = false;
+            this.ClientDB.Click += new System.EventHandler(this.ClientDB_Click);
             // 
-            // button5
+            // SendParameters
             // 
-            this.button5.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.button5.Font = new System.Drawing.Font("Leelawadee UI", 12F);
-            this.button5.Location = new System.Drawing.Point(410, 155);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(190, 57);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Подать показания";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.SendParameters.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.SendParameters.Font = new System.Drawing.Font("Leelawadee UI", 12F);
+            this.SendParameters.Location = new System.Drawing.Point(410, 155);
+            this.SendParameters.Name = "SendParameters";
+            this.SendParameters.Size = new System.Drawing.Size(190, 57);
+            this.SendParameters.TabIndex = 6;
+            this.SendParameters.Text = "Подать показания";
+            this.SendParameters.UseVisualStyleBackColor = false;
+            this.SendParameters.Click += new System.EventHandler(this.SendParameters_Click);
             // 
             // MainPage
             // 
@@ -124,18 +124,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(694, 492);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.SendParameters);
+            this.Controls.Add(this.Exit);
+            this.Controls.Add(this.ServiceDB);
+            this.Controls.Add(this.AddServiceToClient);
+            this.Controls.Add(this.ClientDB);
+            this.Controls.Add(this.pricesDataGrid);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainPage";
             this.Text = "Меню";
             this.Load += new System.EventHandler(this.MainPage_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pricesDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -143,11 +143,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridView pricesDataGrid;
+        private System.Windows.Forms.Button ServiceDB;
+        private System.Windows.Forms.Button Exit;
+        private System.Windows.Forms.Button AddServiceToClient;
+        private System.Windows.Forms.Button ClientDB;
+        private System.Windows.Forms.Button SendParameters;
     }
 }

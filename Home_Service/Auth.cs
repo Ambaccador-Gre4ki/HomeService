@@ -23,26 +23,27 @@ namespace Home_Service
                 };
                 SqliteDataReader dr = sql.ExecuteReader();
                 DataTable dt = new DataTable();
-                //dr.Read();
                 dt.Load(dr);
-                dataGridView1.DataSource = dt;
+                serviceDataGrid_MainPage.DataSource = dt;
                 dt.Columns["service"].ColumnName = "Услуга";
                 dt.Columns["price"].ColumnName = "Цена";
-                dataGridView1.Columns[0].Width = 180;
-                dataGridView1.Columns[1].Width = 130;
-                dataGridView1.AllowUserToAddRows = false;
+                serviceDataGrid_MainPage.Columns[0].Width = 180;
+                serviceDataGrid_MainPage.Columns[1].Width = 130;
+                serviceDataGrid_MainPage.AllowUserToAddRows = false;
                 connection.Close();
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+
+        private void SignIn_Click(object sender, EventArgs e)
         {
             //обработка авторизации
-            try {
-                string login = textBox1.Text;
-                string password = textBox2.Text;
+            try
+            {
+                string login = this.login.Text;
+                string password = this.password.Text;
                 using (var connection = new SqliteConnection("Data Source=HS.db"))//строка подключения
                 {
-                    connection.Open();                    
+                    connection.Open();
                     SqliteCommand sql = new SqliteCommand
                     {
                         Connection = connection,
@@ -50,7 +51,7 @@ namespace Home_Service
                     };
                     SqliteDataReader dr = sql.ExecuteReader();
                     DataTable dt = new DataTable();
-                    dt.Load(dr);                    
+                    dt.Load(dr);
                     nuls.state = Convert.ToInt32(dt.Rows[0].ItemArray.GetValue(2));
                     nuls.user_id = Convert.ToInt32(dt.Rows[0].ItemArray.GetValue(3));
                     connection.Close();
@@ -59,10 +60,11 @@ namespace Home_Service
                 this.Visible = false;
                 mainPage.ShowDialog();
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 _ = ex.Message;
                 MessageBox.Show("Неверный логин или пароль", "Ошибка");
             }
-        }        
+        }
     }
 }

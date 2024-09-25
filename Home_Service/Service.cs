@@ -31,24 +31,24 @@ namespace Home_Service
                 dt.Load(dr);
                 dt.Columns[1].ColumnName = "Услуга";
                 dt.Columns[2].ColumnName = "Стоимость";
-                dataGridView1.DataSource = dt;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[1].Width = 172;
-                dataGridView1.Columns[2].Width = 173;
+                serviceDataGrid.DataSource = dt;
+                serviceDataGrid.Columns[0].Visible = false;
+                serviceDataGrid.Columns[1].Width = 172;
+                serviceDataGrid.Columns[2].Width = 173;
                 connection.Close();
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)//меню
+        private void Menu_Click(object sender, EventArgs e)//меню
         {
             MainPage mainPage = new MainPage();
             this.Visible = false;
             mainPage.ShowDialog();
         }
 
-        private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void serviceDataGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string ID = dataGridView1.SelectedCells[0].Value.ToString();
+            string ID = serviceDataGrid.SelectedCells[0].Value.ToString();
 
             using (var connection = new SqliteConnection("Data Source=HS.db"))
             {
@@ -61,22 +61,22 @@ namespace Home_Service
                 SqliteDataReader dr = sql.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(dr);
-                textBox1.Text = dt.Rows[0].ItemArray.GetValue(1).ToString();
-                textBox2.Text = dt.Rows[0].ItemArray.GetValue(2).ToString();
+                serviceName.Text = dt.Rows[0].ItemArray.GetValue(1).ToString();
+                priceValue.Text = dt.Rows[0].ItemArray.GetValue(2).ToString();
                 connection.Close();
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)//Добавить услугу
+        
+        private void AddService_Click(object sender, EventArgs e)//Добавить услугу
         {
-            string name = textBox1.Text.ToString();
-            string price = textBox2.Text.ToString();            
+            string name = serviceName.Text.ToString();
+            string price = priceValue.Text.ToString();
             using (var connection = new SqliteConnection("Data Source=HS.db"))
             {
                 connection.Open();
                 SqliteCommand sql = new SqliteCommand
                 {
-                    Connection= connection,
+                    Connection = connection,
                     CommandText = "INSERT INTO Services (service, price) VALUES ('" + name + "', '" + price + "');"
                 };
                 sql.ExecuteNonQuery();
@@ -84,15 +84,15 @@ namespace Home_Service
             }
             MessageBox.Show("Запись в базу добавлена", "", MessageBoxButtons.OK);
             UpdateGridView();
-            textBox1.Clear();
-            textBox2.Clear();
+            serviceName.Clear();
+            priceValue.Clear();
         }
 
-        private void button2_Click(object sender, EventArgs e)//изменить услугу
+        private void ChangeService_Click(object sender, EventArgs e)//изменить услугу
         {
-            string name = textBox1.Text.ToString();
-            string price = textBox2.Text.ToString();
-            string ID = dataGridView1.SelectedCells[0].Value.ToString();
+            string name = serviceName.Text.ToString();
+            string price = priceValue.Text.ToString();
+            string ID = serviceDataGrid.SelectedCells[0].Value.ToString();
 
             using (var connection = new SqliteConnection("Data Source=HS.db"))
             {
@@ -106,15 +106,15 @@ namespace Home_Service
                 connection.Close();
             }
             UpdateGridView();
-            textBox1.Clear();
-            textBox2.Clear();
+            serviceName.Clear();
+            priceValue.Clear();
         }
 
-        private void button3_Click(object sender, EventArgs e)//Удаление услуги
+        private void DeleteService_Click(object sender, EventArgs e)//Удаление услуги
         {
-            string name = textBox1.Text.ToString();
-            string price = textBox2.Text.ToString();
-            string ID = dataGridView1.SelectedCells[0].Value.ToString();
+            string name = serviceName.Text.ToString();
+            string price = priceValue.Text.ToString();
+            string ID = serviceDataGrid.SelectedCells[0].Value.ToString();
 
             using (var connection = new SqliteConnection("Data Source=HS.db"))
             {
@@ -128,8 +128,8 @@ namespace Home_Service
                 connection.Close();
             }
             UpdateGridView();
-            textBox1.Clear();
-            textBox2.Clear();
+            serviceName.Clear();
+            priceValue.Clear();
         }
     }
 }
