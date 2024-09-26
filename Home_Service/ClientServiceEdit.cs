@@ -41,7 +41,7 @@ namespace Home_Service
             UpdateGridView();
         }
 
-        private void Menu_Click(object sender, EventArgs e)//Кнопка меню
+        private void MenuCS_Click(object sender, EventArgs e)//Кнопка меню
         {
             MainPage mainPage = new MainPage();
             this.Visible = false;
@@ -50,9 +50,9 @@ namespace Home_Service
 
         private void AddClientService_Click(object sender, EventArgs e)//Добавление услуги
         {
-            if (serviceComboBox.Text == "" || clientComboBox.Text == "")
+            if (String.IsNullOrEmpty(serviceComboBox.Text) || String.IsNullOrEmpty(clientComboBox.Text))
             {
-                MessageBox.Show("Выберите счет и услугу", "Ошибка :(");
+                MessageBox.Show("Выберите счет и услугу", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);                
             }
             else
             {
@@ -93,7 +93,7 @@ namespace Home_Service
                     connection.Close();
                 }
                 UpdateGridView();
-                MessageBox.Show("Изменения внесены в базу", "", MessageBoxButtons.OK);
+                MessageBox.Show("Изменения внесены в базу", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -155,6 +155,7 @@ namespace Home_Service
                 sql.ExecuteNonQuery();
                 connection.Close();
             }
+            MessageBox.Show("Запись была удалена из базы", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             UpdateGridView();
         }
     }

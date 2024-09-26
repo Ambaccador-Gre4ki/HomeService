@@ -44,35 +44,44 @@ namespace Home_Service
 
         private void AddClient_Click(object sender, EventArgs e)//Добавить пользователя
         {
-            if (companyTextBox.Text == "" || fullNameTextBox.Text == "" || phoneNumberTextBox.Text == "" || addressTextBox.Text == "")
-            { MessageBox.Show("Ошибка! Заполните все поля!", "", MessageBoxButtons.OK); }
-            else
-            {
-                string company = companyTextBox.Text.ToString();
-                string owner = fullNameTextBox.Text.ToString();
-                string phone = phoneNumberTextBox.Text.ToString();
-                string address = addressTextBox.Text.ToString();
-                string acc_numb = accountNumberTextBox.Text.ToString();
+            string company = companyTextBox.Text.ToString();
+            string owner = fullNameTextBox.Text.ToString();
+            string phone = phoneNumberTextBox.Text.ToString();
+            bool isPhone = int.TryParse(phone, out _);
+            string address = addressTextBox.Text.ToString();
+            string acc_numb = accountNumberTextBox.Text.ToString();
+            bool isAccNumb = int.TryParse(acc_numb, out _);
 
-                using (var connection = new SqliteConnection("Data Source=HS.db"))
-                {
-                    connection.Open();
-                    SqliteCommand sql = new SqliteCommand
-                    {
-                        Connection = connection,
-                        CommandText = "INSERT INTO Clients (account_number, full_name, phone_number, address, company) VALUES ('"
-                        + acc_numb + "', '" + owner + "', '" + phone + "', '" + address + "', '" + company + "');"
-                    };
-                    sql.ExecuteNonQuery();
-                    connection.Close();
-                }
-                UpdateGridView();
-                MessageBox.Show("Запись успешно добавлена", "Успех!", MessageBoxButtons.OK);
-                companyTextBox.Text = "";
-                fullNameTextBox.Clear();
-                phoneNumberTextBox.Clear();
-                addressTextBox.Clear();
+            if (String.IsNullOrWhiteSpace(company) || String.IsNullOrWhiteSpace(owner) || String.IsNullOrWhiteSpace(phone)
+                || String.IsNullOrWhiteSpace(address) || String.IsNullOrWhiteSpace(acc_numb))
+            {
+                MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            if (isPhone == false || isAccNumb == false)
+            {
+                MessageBox.Show("Телефон и/или лицевой счёт не являются числом", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (var connection = new SqliteConnection("Data Source=HS.db"))
+            {
+                connection.Open();
+                SqliteCommand sql = new SqliteCommand
+                {
+                    Connection = connection,
+                    CommandText = "INSERT INTO Clients (account_number, full_name, phone_number, address, company) VALUES ('"
+                    + acc_numb + "', '" + owner + "', '" + phone + "', '" + address + "', '" + company + "');"
+                };
+                sql.ExecuteNonQuery();
+                connection.Close();
+            }
+            UpdateGridView();
+            MessageBox.Show("Запись успешно добавлена", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            companyTextBox.Text = "";
+            fullNameTextBox.Clear();
+            phoneNumberTextBox.Clear();
+            addressTextBox.Clear();         
         }
         public void UpdateGridView()
         {
@@ -98,39 +107,45 @@ namespace Home_Service
 
         private void EditClient_Click(object sender, EventArgs e)//Редактировать плательщика
         {
-            string ID = clientsDataGrid.SelectedCells[0].Value.ToString();
-            if (companyTextBox.Text == "" || fullNameTextBox.Text == "" || phoneNumberTextBox.Text == "" || addressTextBox.Text == "")
+            string ID = clientsDataGrid.SelectedCells[0].Value.ToString();            
+            if (String.IsNullOrWhiteSpace(companyTextBox.Text) || String.IsNullOrWhiteSpace(fullNameTextBox.Text)
+                || String.IsNullOrWhiteSpace(phoneNumberTextBox.Text) || String.IsNullOrWhiteSpace(addressTextBox.Text)
+                || String.IsNullOrWhiteSpace(accountNumberTextBox.Text))
             {
-                MessageBox.Show("Ошибка! Заполните все поля!", "", MessageBoxButtons.OK);
+                MessageBox.Show("Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                using (var connection = new SqliteConnection("Data Source=HS.db"))
-                {
-                    connection.Open();
-                    SqliteCommand sql = new SqliteCommand
-                    {
-                        Connection = connection,
-                        CommandText = "UPDATE Clients SET account_number='" + accountNumberTextBox.Text + "', company='" + companyTextBox.Text + "', full_name='" + fullNameTextBox.Text
-                        + "', phone_number='" + phoneNumberTextBox.Text + "', address='" + addressTextBox.Text + "' WHERE id_client="
-                        + Convert.ToInt32(ID) + ";"
-                    };
-                    sql.ExecuteNonQuery();
-                    connection.Close();
-                }
 
-                UpdateGridView();
-                MessageBox.Show("Запись успешно изменена", "Успех!", MessageBoxButtons.OK);
-                companyTextBox.Text = "";
-                fullNameTextBox.Text = "";
-                phoneNumberTextBox.Text = "";
-                addressTextBox.Text = "";
+            if (int.TryParse(phoneNumberTextBox.Text, out _) == false || int.TryParse(accountNumberTextBox.Text, out _) == false)
+            {
+                MessageBox.Show("Телефон и/или лицевой счёт не являются числом", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            using (var connection = new SqliteConnection("Data Source=HS.db"))
+            {
+                connection.Open();
+                SqliteCommand sql = new SqliteCommand
+                {
+                    Connection = connection,
+                    CommandText = "UPDATE Clients SET account_number='" + accountNumberTextBox.Text + "', company='" + companyTextBox.Text + "', full_name='" + fullNameTextBox.Text
+                    + "', phone_number='" + phoneNumberTextBox.Text + "', address='" + addressTextBox.Text + "' WHERE id_client="
+                    + Convert.ToInt32(ID) + ";"
+                };
+                sql.ExecuteNonQuery();
+                connection.Close();
+            }
+            UpdateGridView();
+            MessageBox.Show("Запись успешно изменена", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            companyTextBox.Text = "";
+            fullNameTextBox.Text = "";
+            phoneNumberTextBox.Text = "";
+            addressTextBox.Text = "";                                          
         }
 
         private void DeleteClient_Click(object sender, EventArgs e)//Удаление пользователя
         {
-            string ID = clientsDataGrid.SelectedCells[0].Value.ToString();
+            string ID = clientsDataGrid.SelectedCells[0].Value.ToString();            
             using (var connection = new SqliteConnection("Data Source=HS.db"))
             {
                 DataTable dt = new DataTable();
@@ -154,38 +169,45 @@ namespace Home_Service
 
         private void Search_Click(object sender, EventArgs e)//Поиск по лицевому счёту
         {
-            if (accountSearchText.Text == "")
-            { MessageBox.Show("Ошибка! Заполните поле 'Лицевой счет'", "Ошибка :(", MessageBoxButtons.OK); }
-            else
+            if (String.IsNullOrWhiteSpace(accountSearchTextBox.Text))
+            { 
+                MessageBox.Show("Ошибка! Поле поиска пусто", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (int.TryParse(accountNumberTextBox.Text, out _) == false)
             {
-                using (var connection = new SqliteConnection("Data Source=HS.db"))
+                MessageBox.Show("Ошибка! Введено не число", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (var connection = new SqliteConnection("Data Source=HS.db"))
+            {
+                connection.Open();
+                SqliteCommand sql = new SqliteCommand
                 {
-                    connection.Open();
-                    SqliteCommand sql = new SqliteCommand
-                    {
-                        Connection = connection,
-                        CommandText = "SELECT * FROM Clients WHERE account_number=" + Convert.ToInt32(accountSearchText.Text) + ";"
-                    };
-                    SqliteDataReader dr = sql.ExecuteReader();
-                    DataTable dt = new DataTable();
-                    dt.Load(dr);
-                    dt.Columns["company"].ColumnName = "Управляющая компания";
-                    dt.Columns["account_number"].ColumnName = "Лицевой счет";
-                    dt.Columns["full_name"].ColumnName = "ФИО";
-                    dt.Columns["phone_number"].ColumnName = "Телефон";
-                    dt.Columns["address"].ColumnName = "Адрес";
-                    clientsDataGrid.DataSource = dt;
-                    clientsDataGrid.Columns[0].Width = 130;
-                    clientsDataGrid.Columns[1].Width = 140;
-                    clientsDataGrid.Columns[2].Width = 240;
-                    clientsDataGrid.Columns[3].Width = 140;
-                    clientsDataGrid.Columns[4].Width = 110;
-                    connection.Close();
-                }
+                    Connection = connection,
+                    CommandText = "SELECT * FROM Clients WHERE account_number=" + Convert.ToInt32(accountSearchTextBox.Text) + ";"
+                };
+                SqliteDataReader dr = sql.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(dr);
+                dt.Columns["company"].ColumnName = "Управляющая компания";
+                dt.Columns["account_number"].ColumnName = "Лицевой счет";
+                dt.Columns["full_name"].ColumnName = "ФИО";
+                dt.Columns["phone_number"].ColumnName = "Телефон";
+                dt.Columns["address"].ColumnName = "Адрес";
+                clientsDataGrid.DataSource = dt;
+                clientsDataGrid.Columns[0].Width = 130;
+                clientsDataGrid.Columns[1].Width = 140;
+                clientsDataGrid.Columns[2].Width = 240;
+                clientsDataGrid.Columns[3].Width = 140;
+                clientsDataGrid.Columns[4].Width = 110;
+                connection.Close();
             }
         }
 
-        private void Menu_Click(object sender, EventArgs e)//Кнопка меню
+        private void MenuCT_Click(object sender, EventArgs e)//Кнопка меню
         {
             MainPage mainPage = new MainPage();
             this.Visible = false;

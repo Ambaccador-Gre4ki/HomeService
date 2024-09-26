@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientServiceEdit));
-            this.Menu = new System.Windows.Forms.Button();
+            this.Menu_CS = new System.Windows.Forms.Button();
             this.client_serviceDataGrid = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.AddCleintService = new System.Windows.Forms.Button();
@@ -45,17 +45,17 @@
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Menu
+            // Menu_CS
             // 
-            this.Menu.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.Menu.Font = new System.Drawing.Font("Leelawadee UI", 12F);
-            this.Menu.Location = new System.Drawing.Point(673, 26);
-            this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(99, 47);
-            this.Menu.TabIndex = 0;
-            this.Menu.Text = "Меню";
-            this.Menu.UseVisualStyleBackColor = false;
-            this.Menu.Click += new System.EventHandler(this.Menu_Click);
+            this.Menu_CS.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.Menu_CS.Font = new System.Drawing.Font("Leelawadee UI", 12F);
+            this.Menu_CS.Location = new System.Drawing.Point(673, 26);
+            this.Menu_CS.Name = "Menu_CS";
+            this.Menu_CS.Size = new System.Drawing.Size(99, 47);
+            this.Menu_CS.TabIndex = 0;
+            this.Menu_CS.Text = "Меню";
+            this.Menu_CS.UseVisualStyleBackColor = false;
+            this.Menu_CS.Click += new System.EventHandler(this.MenuCS_Click);
             // 
             // client_serviceDataGrid
             // 
@@ -165,7 +165,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.client_serviceDataGrid);
-            this.Controls.Add(this.Menu);
+            this.Controls.Add(this.Menu_CS);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ClientServiceEdit";
             this.Text = "Услуги потребителя";
@@ -180,7 +180,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Menu;
+        private System.Windows.Forms.Button Menu_CS;
         private System.Windows.Forms.DataGridView client_serviceDataGrid;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;

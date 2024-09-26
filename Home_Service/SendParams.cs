@@ -61,7 +61,7 @@ namespace Home_Service
             }
         }
 
-        private void Menu_Click(object sender, EventArgs e)//Меню
+        private void MenuSP_Click(object sender, EventArgs e)//Меню
         {
             MainPage mainPage = new MainPage();
             this.Visible = false;
@@ -73,6 +73,15 @@ namespace Home_Service
             string service = serviceComboBox.Text.ToString();
             string data = datePicker.Text.ToString();
             string curr_value = currentParams.Text.ToString();
+            if (String.IsNullOrEmpty(data) || String.IsNullOrWhiteSpace(curr_value)) {
+                MessageBox.Show("Ошибка! Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (int.TryParse(curr_value, out _) == false)
+            {
+                MessageBox.Show("Показатель не является числом", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             using (var connection = new SqliteConnection("Data Source=HS.db"))
             {

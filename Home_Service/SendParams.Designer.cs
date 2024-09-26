@@ -38,7 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Menu = new System.Windows.Forms.Button();
+            this.Menu_SP = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.paramsHistoryGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -128,17 +128,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Услуга";
             // 
-            // Menu
+            // Menu_SP
             // 
-            this.Menu.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.Menu.Font = new System.Drawing.Font("Leelawadee UI", 12F);
-            this.Menu.Location = new System.Drawing.Point(683, 12);
-            this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(95, 37);
-            this.Menu.TabIndex = 3;
-            this.Menu.Text = "Меню";
-            this.Menu.UseVisualStyleBackColor = false;
-            this.Menu.Click += new System.EventHandler(this.Menu_Click);
+            this.Menu_SP.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.Menu_SP.Font = new System.Drawing.Font("Leelawadee UI", 12F);
+            this.Menu_SP.Location = new System.Drawing.Point(683, 12);
+            this.Menu_SP.Name = "Menu_SP";
+            this.Menu_SP.Size = new System.Drawing.Size(95, 37);
+            this.Menu_SP.TabIndex = 3;
+            this.Menu_SP.Text = "Меню";
+            this.Menu_SP.UseVisualStyleBackColor = false;
+            this.Menu_SP.Click += new System.EventHandler(this.MenuSP_Click);
             // 
             // SendParams
             // 
@@ -146,7 +146,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(790, 450);
-            this.Controls.Add(this.Menu);
+            this.Controls.Add(this.Menu_SP);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.paramsHistoryGridView);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -171,6 +171,6 @@
         private System.Windows.Forms.Button Send;
         private System.Windows.Forms.TextBox currentParams;
         private System.Windows.Forms.DateTimePicker datePicker;
-        private System.Windows.Forms.Button Menu;
+        private System.Windows.Forms.Button Menu_SP;
     }
 }

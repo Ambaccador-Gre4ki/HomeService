@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Home_Service
 {
@@ -31,7 +32,7 @@ namespace Home_Service
                 serviceDataGrid_MainPage.Columns[1].Width = 130;
                 serviceDataGrid_MainPage.AllowUserToAddRows = false;
                 connection.Close();
-            }
+            }            
         }
 
         private void SignIn_Click(object sender, EventArgs e)
@@ -41,6 +42,11 @@ namespace Home_Service
             {
                 string login = this.login.Text;
                 string password = this.password.Text;
+                if (String.IsNullOrWhiteSpace(login) || String.IsNullOrWhiteSpace(password))
+                {
+                    MessageBox.Show("Ошибка! Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }                
                 using (var connection = new SqliteConnection("Data Source=HS.db"))//строка подключения
                 {
                     connection.Open();
@@ -63,8 +69,13 @@ namespace Home_Service
             catch (Exception ex)
             {
                 _ = ex.Message;
-                MessageBox.Show("Неверный логин или пароль", "Ошибка");
+                MessageBox.Show("Неверный логин или пароль", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

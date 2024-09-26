@@ -78,5 +78,10 @@ namespace Home_Service
         {
             Application.Exit();
         }
+
+        private void News_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

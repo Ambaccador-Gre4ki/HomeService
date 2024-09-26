@@ -38,6 +38,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.serviceDataGrid_MainPage = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
+            this.CloseButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.serviceDataGrid_MainPage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,12 +128,26 @@
             this.label5.TabIndex = 8;
             this.label5.Text = resources.GetString("label5.Text");
             // 
+            // CloseButton
+            // 
+            this.CloseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseButton.Font = new System.Drawing.Font("Leelawadee UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseButton.Location = new System.Drawing.Point(521, 278);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(106, 43);
+            this.CloseButton.TabIndex = 9;
+            this.CloseButton.Text = "Закрыть";
+            this.CloseButton.UseVisualStyleBackColor = false;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            // 
             // Auth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(681, 385);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.serviceDataGrid_MainPage);
             this.Controls.Add(this.label4);
@@ -164,6 +179,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView serviceDataGrid_MainPage;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button CloseButton;
     }
 }
 

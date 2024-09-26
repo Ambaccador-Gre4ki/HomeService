@@ -71,6 +71,17 @@ namespace Home_Service
         {
             string name = serviceName.Text.ToString();
             string price = priceValue.Text.ToString();
+            bool isNumb = int.TryParse(price, out _);//Проверка на то, что цена является числом            
+            if (String.IsNullOrWhiteSpace(name) || String.IsNullOrWhiteSpace(price))
+            {
+                MessageBox.Show("Ошибка! Заполните все поля!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (isNumb == false)
+            {
+                MessageBox.Show("Ошибка! Тариф не является числом!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             using (var connection = new SqliteConnection("Data Source=HS.db"))
             {
                 connection.Open();
@@ -82,7 +93,7 @@ namespace Home_Service
                 sql.ExecuteNonQuery();
                 connection.Close();
             }
-            MessageBox.Show("Запись в базу добавлена", "", MessageBoxButtons.OK);
+            MessageBox.Show("Запись в базу добавлена", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             UpdateGridView();
             serviceName.Clear();
             priceValue.Clear();
@@ -92,7 +103,14 @@ namespace Home_Service
         {
             string name = serviceName.Text.ToString();
             string price = priceValue.Text.ToString();
+            bool isNumb = int.TryParse(price, out _);//Проверка на то, что цена является числом
+
             string ID = serviceDataGrid.SelectedCells[0].Value.ToString();
+            if (isNumb == false)
+            {
+                MessageBox.Show("Ошибка! Тариф не является числом!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             using (var connection = new SqliteConnection("Data Source=HS.db"))
             {
@@ -105,6 +123,7 @@ namespace Home_Service
                 sql.ExecuteNonQuery();
                 connection.Close();
             }
+            MessageBox.Show("Запись в базе изменена", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             UpdateGridView();
             serviceName.Clear();
             priceValue.Clear();
@@ -127,6 +146,7 @@ namespace Home_Service
                 sql.ExecuteNonQuery();
                 connection.Close();
             }
+            MessageBox.Show("Запись в базе была удалена", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
             UpdateGridView();
             serviceName.Clear();
             priceValue.Clear();
