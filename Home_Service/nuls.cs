@@ -8,7 +8,7 @@ namespace Home_Service
 {
     class @nuls
     {
-        public static string str = "";
+        //public static string news_text = "";
         public static int state = 0;
         public static int user_id = 0;
     }

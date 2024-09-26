@@ -17,7 +17,8 @@ namespace Home_Service
             {
                 ClientDB.Visible = false;//то редактирование базы
                 AddServiceToClient.Visible = false;//недоступно
-                ServiceDB.Visible = false;//может только подать данные                                       
+                ServiceDB.Visible = false;//может только подать данные
+                                          //
             }
             else
             {
@@ -73,15 +74,16 @@ namespace Home_Service
             this.Visible = false;
             service.ShowDialog();
         }
+        private void NewsButton_Click(object sender, EventArgs e)
+        {
+            NewsEdit newsEdit = new NewsEdit();
+            this.Visible = false;
+            newsEdit.ShowDialog();
+        }
 
         private void Exit_Click(object sender, EventArgs e)//Вызод из приложения
         {
             Application.Exit();
-        }
-
-        private void News_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

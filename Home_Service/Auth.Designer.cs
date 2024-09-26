@@ -37,7 +37,7 @@
             this.SignIn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.serviceDataGrid_MainPage = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
+            this.news_text = new System.Windows.Forms.Label();
             this.CloseButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.serviceDataGrid_MainPage)).BeginInit();
             this.SuspendLayout();
@@ -106,7 +106,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Leelawadee UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(25, 194);
+            this.label4.Location = new System.Drawing.Point(25, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(129, 30);
             this.label4.TabIndex = 6;
@@ -115,18 +115,19 @@
             // serviceDataGrid_MainPage
             // 
             this.serviceDataGrid_MainPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.serviceDataGrid_MainPage.Location = new System.Drawing.Point(29, 227);
+            this.serviceDataGrid_MainPage.Location = new System.Drawing.Point(27, 218);
             this.serviceDataGrid_MainPage.Name = "serviceDataGrid_MainPage";
-            this.serviceDataGrid_MainPage.Size = new System.Drawing.Size(309, 140);
+            this.serviceDataGrid_MainPage.Size = new System.Drawing.Size(309, 155);
             this.serviceDataGrid_MainPage.TabIndex = 7;
             // 
-            // label5
+            // news_text
             // 
-            this.label5.Location = new System.Drawing.Point(27, 65);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(310, 114);
-            this.label5.TabIndex = 8;
-            this.label5.Text = resources.GetString("label5.Text");
+            this.news_text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.news_text.Location = new System.Drawing.Point(27, 65);
+            this.news_text.Name = "news_text";
+            this.news_text.Size = new System.Drawing.Size(310, 114);
+            this.news_text.TabIndex = 8;
+            this.news_text.Text = resources.GetString("news_text.Text");
             // 
             // CloseButton
             // 
@@ -148,7 +149,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(681, 385);
             this.Controls.Add(this.CloseButton);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.news_text);
             this.Controls.Add(this.serviceDataGrid_MainPage);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.SignIn);
@@ -178,7 +179,7 @@
         private System.Windows.Forms.Button SignIn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView serviceDataGrid_MainPage;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label news_text;
         private System.Windows.Forms.Button CloseButton;
     }
 }

@@ -2,7 +2,6 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Home_Service
 {
@@ -14,25 +13,43 @@ namespace Home_Service
         }
         private void Auth_Load(object sender, EventArgs e)
         {
-            using (var connection = new SqliteConnection("Data Source=HS.db"))//строка подключения
-            {
-                connection.Open();
-                SqliteCommand sql = new SqliteCommand
+            try {
+                //Путь к БД - С:\Users\Maxim\Document\HomeService\Home_Service\bin\Debug\HS.db
+                using (var connection = new SqliteConnection("Data Source=HS.db"))//строка подключения
                 {
-                    Connection = connection,
-                    CommandText = "SELECT service, price FROM Services;"
-                };
-                SqliteDataReader dr = sql.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Load(dr);
-                serviceDataGrid_MainPage.DataSource = dt;
-                dt.Columns["service"].ColumnName = "Услуга";
-                dt.Columns["price"].ColumnName = "Цена";
-                serviceDataGrid_MainPage.Columns[0].Width = 180;
-                serviceDataGrid_MainPage.Columns[1].Width = 130;
-                serviceDataGrid_MainPage.AllowUserToAddRows = false;
-                connection.Close();
-            }            
+                    connection.Open();
+                    //Загрузка тарифов
+                    SqliteCommand sql = new SqliteCommand
+                    {
+                        Connection = connection,
+                        CommandText = "SELECT service, price FROM Services;"
+                    };
+                    SqliteDataReader dr = sql.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(dr);
+                    serviceDataGrid_MainPage.DataSource = dt;
+                    dt.Columns["service"].ColumnName = "Услуга";
+                    dt.Columns["price"].ColumnName = "Цена";
+                    serviceDataGrid_MainPage.Columns[0].Width = 180;
+                    serviceDataGrid_MainPage.Columns[1].Width = 130;
+                    serviceDataGrid_MainPage.AllowUserToAddRows = false;
+                    //Загрузка новостей
+                    SqliteCommand sql_news = new SqliteCommand
+                    {
+                        Connection = connection,
+                        CommandText = "SELECT Text FROM News;"
+                    };
+                    SqliteDataReader reader = sql_news.ExecuteReader();
+                    while (reader.Read()) {
+                        news_text.Text = reader.GetString(0);
+                    }
+                    connection.Close();
+                }            
+            }
+            catch 
+            {
+                MessageBox.Show("Не удалось подключиться к базе данных!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void SignIn_Click(object sender, EventArgs e)

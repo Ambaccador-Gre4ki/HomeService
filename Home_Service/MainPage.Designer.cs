@@ -36,7 +36,7 @@
             this.AddServiceToClient = new System.Windows.Forms.Button();
             this.ClientDB = new System.Windows.Forms.Button();
             this.SendParameters = new System.Windows.Forms.Button();
-            this.News = new System.Windows.Forms.Button();
+            this.NewsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pricesDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,17 +119,17 @@
             this.SendParameters.UseVisualStyleBackColor = false;
             this.SendParameters.Click += new System.EventHandler(this.SendParameters_Click);
             // 
-            // News
+            // NewsButton
             // 
-            this.News.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.News.Font = new System.Drawing.Font("Leelawadee UI", 12F);
-            this.News.Location = new System.Drawing.Point(378, 315);
-            this.News.Name = "News";
-            this.News.Size = new System.Drawing.Size(190, 57);
-            this.News.TabIndex = 7;
-            this.News.Text = "Работа с новостями";
-            this.News.UseVisualStyleBackColor = false;
-            this.News.Click += new System.EventHandler(this.News_Click);
+            this.NewsButton.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.NewsButton.Font = new System.Drawing.Font("Leelawadee UI", 12F);
+            this.NewsButton.Location = new System.Drawing.Point(378, 315);
+            this.NewsButton.Name = "NewsButton";
+            this.NewsButton.Size = new System.Drawing.Size(190, 57);
+            this.NewsButton.TabIndex = 7;
+            this.NewsButton.Text = "Работа с новостями";
+            this.NewsButton.UseVisualStyleBackColor = false;
+            this.NewsButton.Click += new System.EventHandler(this.NewsButton_Click);
             // 
             // MainPage
             // 
@@ -137,7 +137,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(599, 403);
-            this.Controls.Add(this.News);
+            this.Controls.Add(this.NewsButton);
             this.Controls.Add(this.SendParameters);
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.ServiceDB);
@@ -163,6 +163,6 @@
         private System.Windows.Forms.Button AddServiceToClient;
         private System.Windows.Forms.Button ClientDB;
         private System.Windows.Forms.Button SendParameters;
-        private System.Windows.Forms.Button News;
+        private System.Windows.Forms.Button NewsButton;
     }
 }
